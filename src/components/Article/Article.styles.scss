@@ -1,0 +1,55 @@
+.article {
+  width: 100rem;
+  max-width: 100%;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  box-shadow: 0 0 1.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    width: 60%;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    width: 80%;
+    margin-top: 3rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  &__image {
+    width: 80rem;
+    height: 50rem;
+    margin: 5rem;
+  }
+
+  &__footer {
+    width: 85%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__author {
+    font-size: 1.7rem;
+  }
+
+  &__published-at {
+    margin-top: 5px;
+    font-style: italic;
+  }
+}
