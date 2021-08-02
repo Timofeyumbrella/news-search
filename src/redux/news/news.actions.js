@@ -1,0 +1,45 @@
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+
+import { NewsActionTypes } from "./news.types";
+
+const getNewsRequest = () => ({
+  type: NewsActionTypes.GET_NEWS_REQUEST,
+});
+
+const getNewsSuccess = (news) => ({
+  type: NewsActionTypes.GET_NEWS_SUCCESS,
+  payload: news,
+});
+
+const getNewsFailure = (error) => ({
+  type: NewsActionTypes.GET_NEWS_FAILURE,
+  payload: error,
+});
+
+export const getMoreNews = (news) => ({
+  type: NewsActionTypes.GET_MORE_NEWS,
+  payload: news,
+});
+
+export const getNews = () => (dispatch) => {
+  const getNewsAsync = async () => {
+    try {
+      dispatch(getNewsRequest());
+
+      const res = await axios.get(
+        `https://newsapi.org/v2/everything?q=everything&sortBy=publishedAt&page=1&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
+      );
+
+      dispatch(
+        getNewsSuccess(
+          res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
+        )
+      );
+    } catch (error) {
+      dispatch(getNewsFailure(error.message));
+    }
+  };
+
+  getNewsAsync();
+};
