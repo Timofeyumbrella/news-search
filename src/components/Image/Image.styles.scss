@@ -1,0 +1,10 @@
+.image,
+.image-not-found {
+  width: 80rem;
+  height: 50rem;
+  margin: 5rem;
+}
+
+.image-not-found {
+  background: url("../../assets/images/placeholder.jpg") no-repeat center/cover;
+}
