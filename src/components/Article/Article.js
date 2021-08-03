@@ -1,5 +1,7 @@
 import React from "react";
 
+import Image from "../Image/Image";
+
 import "./Article.styles.scss";
 
 const Article = ({ article }) => {
@@ -9,7 +11,7 @@ const Article = ({ article }) => {
     <article className="article">
       <h2 className="article__title">{title}</h2>
       <p className="article__description">{description}</p>
-      <img className="article__image" src={urlToImage} alt={title} />
+      <Image urlToImage={urlToImage} />
       <footer className="article__footer">
         <span className="article__author">{author}</span>
         <span className="article__published-at">{publishedAt}</span>
