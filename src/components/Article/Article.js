@@ -1,18 +1,36 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from "../../redux/favourites/favourites.actions";
+
 import Image from "../Image/Image";
+import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
+import RemoveFavouritesIcon from "../RemoveFavouriteIcon/RemoveFavouriteIcon";
 
 import "./Article.styles.scss";
 
 const Article = ({ article }) => {
   const { id, author, title, description, urlToImage, publishedAt } = article;
+  const { favourites } = useSelector((state) => state.favourites);
+
+  const dispatch = useDispatch();
 
   return (
     <article className="article">
-      <Link to={`/news/${id}`} className="article__title">
+      <Link to={`news/${id}`} className="article__title">
         {title}
       </Link>
+      {favourites.find((favourite) => favourite.id === article.id) ? (
+        <RemoveFavouritesIcon
+          onClick={() => dispatch(removeFromFavourites(article))}
+        />
+      ) : (
+        <FavouritesIcon onClick={() => dispatch(addToFavourites(article))} />
+      )}
       <p className="article__description">{description}</p>
       <Image urlToImage={urlToImage} />
       <footer className="article__footer">

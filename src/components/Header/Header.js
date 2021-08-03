@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { getSearchedNews } from "../../redux/searchedNews/searchedNews.actions";
 
+import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
+
 import "./Header.styles.scss";
 
 const Header = () => {
@@ -36,6 +38,9 @@ const Header = () => {
             onChange={handleChange}
           />
         </form>
+        <Link to="/favourites">
+          <FavouritesIcon isInHeader />
+        </Link>
       </div>
     </header>
   );
