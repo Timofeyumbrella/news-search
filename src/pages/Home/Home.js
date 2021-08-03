@@ -46,15 +46,16 @@ const Home = () => {
 
   return (
     <div className="home">
-      {loading || searchLoading ? (
+      {(loading || searchLoading) && (
         <div className="home__loading">
           <Spinner />
         </div>
-      ) : searchedNews.length ? (
+      )}
+      {searchedNews.length &&
         searchedNews.map((article) => {
           return <Article key={article.id} article={article} />;
-        })
-      ) : news.length ? (
+        })}
+      {news.length && (
         <InifiniteScroll
           dataLength={news.length}
           next={fetchMoreNews}
@@ -64,9 +65,8 @@ const Home = () => {
             return <Article key={article.id} article={article} />;
           })}
         </InifiniteScroll>
-      ) : error || searchError ? (
-        <Error error={error} />
-      ) : null}
+      )}
+      {(error || searchError) && <Error error={error} />}
     </div>
   );
 };
