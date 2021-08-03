@@ -1,15 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Image from "../Image/Image";
 
 import "./Article.styles.scss";
 
 const Article = ({ article }) => {
-  const { author, title, description, urlToImage, publishedAt } = article;
+  const { id, author, title, description, urlToImage, publishedAt } = article;
 
   return (
     <article className="article">
-      <h2 className="article__title">{title}</h2>
+      <Link to={`/news/${id}`} className="article__title">
+        {title}
+      </Link>
       <p className="article__description">{description}</p>
       <Image urlToImage={urlToImage} />
       <footer className="article__footer">

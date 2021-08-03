@@ -1,0 +1,43 @@
+.article-page {
+  &__wrapper {
+    width: 150rem;
+    max-width: 100%;
+    margin: 8rem auto;
+    box-shadow: 0 0 1.3rem rgba(0, 0, 0, 0.1);
+    display: flex;
+  }
+
+  &__info {
+    width: 60%;
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: 3.3rem;
+  }
+
+  &__description {
+    font-size: 2.3rem;
+    margin-top: 3rem;
+  }
+
+  &__content {
+    width: 87%;
+    margin-top: 3rem;
+    font-size: 2.1rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  &__footer {
+    margin-top: 3rem;
+  }
+
+  &__author,
+  &__published-at {
+    display: block;
+    font-size: 1.8rem;
+    font-style: italic;
+  }
+}
