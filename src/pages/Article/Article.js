@@ -13,9 +13,10 @@ import Image from "../../components/Image/Image";
 import "./Article.styles.scss";
 
 const Article = ({ match }) => {
-  const { news } = useSelector((state) => state.news);
-  const { searchedNews } = useSelector((state) => state.searchedNews);
+  const { data: news } = useSelector((state) => state.news);
+  const { data: searchedNews } = useSelector((state) => state.searchedNews);
   const { favourites } = useSelector((state) => state.favourites);
+  const { theme } = useSelector((state) => state.theme);
   const [article, setArticle] = useState({});
 
   const dispatch = useDispatch();
@@ -31,8 +32,8 @@ const Article = ({ match }) => {
     article;
 
   return (
-    <article className="article-page">
-      <div className="article-page__wrapper">
+    <article className={`article-page article-page--${theme}`}>
+      <div className={`article-page__wrapper article-page__wrapper--${theme}`}>
         <Image urlToImage={urlToImage} />
         <div className="article-page__info">
           <h2 className="article-page__title">{title}</h2>

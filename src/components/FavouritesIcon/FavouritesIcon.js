@@ -1,13 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import "./FavouritesIcon.styles.scss";
 
-const FavouritesIcon = ({ onClick, isInHeader }) => {
+const FavouritesIcon = ({ onClick }) => {
+  const { theme } = useSelector((state) => state.theme);
+
   return (
     <i
-      className={`${
-        isInHeader ? `favourites-icon--header` : `favourites-icon`
-      } fas fa-star`}
+      className={`fas fa-star favourites-icon favourites-icon--${theme}`}
       onClick={onClick}
     />
   );

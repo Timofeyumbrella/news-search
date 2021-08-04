@@ -5,17 +5,19 @@ import storage from "redux-persist/lib/storage";
 import newsReducer from "./news/news.reducer";
 import searchedNewsReducer from "./searchedNews/searchedNews.reducer";
 import favouritesReducer from "./favourites/favourites.reducer";
+import themeReducer from "./theme/theme.reducer";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["favourites"],
+  whitelist: ["favourites", "theme"],
 };
 
 const rootReducer = combineReducers({
   news: newsReducer,
   searchedNews: searchedNewsReducer,
   favourites: favouritesReducer,
+  theme: themeReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

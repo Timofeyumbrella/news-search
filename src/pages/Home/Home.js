@@ -15,10 +15,17 @@ import "./Home.styles.scss";
 const Home = () => {
   const [page, setPage] = useState(2);
 
-  const { loading, news, error } = useSelector((state) => state.news);
-  const { searchLoading, searchedNews, searchError } = useSelector(
-    (state) => state.searchedNews
-  );
+  const {
+    loading: loading,
+    data: news,
+    error: error,
+  } = useSelector((state) => state.news);
+  const {
+    loading: searchLoading,
+    data: searchedNews,
+    error: searchError,
+  } = useSelector((state) => state.searchedNews);
+  const { theme } = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
 
@@ -40,18 +47,18 @@ const Home = () => {
         )
       );
     } catch (error) {
-      <Error error={error} />;
+      return <Error error={error} />;
     }
   };
 
   return (
-    <div className="home">
+    <div className={`home home--${theme}`}>
       {(loading || searchLoading) && (
         <div className="home__loading">
           <Spinner />
         </div>
       )}
-      {searchedNews.length &&
+      {searchedNews.length > 0 &&
         searchedNews.map((article) => {
           return <Article key={article.id} article={article} />;
         })}

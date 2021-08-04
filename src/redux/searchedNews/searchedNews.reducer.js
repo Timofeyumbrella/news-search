@@ -1,9 +1,9 @@
 import { SearchedNewsActionTypes } from "./searchedNews.types";
 
 const INITIAL_STATE = {
-  searchLoading: false,
-  searchedNews: [],
-  searchError: "",
+  loading: false,
+  data: [],
+  error: "",
 };
 
 const searchedNewsReducer = (state = INITIAL_STATE, action) => {
@@ -11,27 +11,27 @@ const searchedNewsReducer = (state = INITIAL_STATE, action) => {
     case SearchedNewsActionTypes.GET_SEARCHED_NEWS_REQUEST:
       return {
         ...state,
-        searchLoading: true,
+        loading: true,
       };
     case SearchedNewsActionTypes.GET_SEARCHED_NEWS_SUCCESS:
       return {
         ...state,
-        searchLoading: false,
-        searchedNews: action.payload,
-        searchError: "",
+        loading: false,
+        data: action.payload,
+        error: "",
       };
     case SearchedNewsActionTypes.GET_MORE_SEARCHED_NEWS:
       return {
         ...state,
-        searchLoading: false,
-        searchedNews: [...state.searchedNews, ...action.payload],
-        searchError: "",
+        loading: false,
+        data: [...state.searchedNews, ...action.payload],
+        error: "",
       };
     case SearchedNewsActionTypes.GET_SEARCHED_NEWS_FAILURE:
       return {
         ...state,
-        searchLoading: false,
-        searchedNews: [],
+        loading: false,
+        data: [],
         error: action.payload,
       };
     default:

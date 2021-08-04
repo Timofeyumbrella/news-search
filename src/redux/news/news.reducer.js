@@ -2,7 +2,7 @@ import { NewsActionTypes } from "./news.types";
 
 const INITIAL_STATE = {
   loading: false,
-  news: [],
+  data: [],
   error: "",
 };
 
@@ -17,21 +17,21 @@ const newsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        news: action.payload,
+        data: action.payload,
         error: "",
       };
     case NewsActionTypes.GET_MORE_NEWS:
       return {
         ...state,
         loading: false,
-        news: [...state.news, ...action.payload],
+        data: [...state.news, ...action.payload],
         error: "",
       };
     case NewsActionTypes.GET_NEWS_FAILURE:
       return {
         ...state,
         loading: false,
-        news: [],
+        data: [],
         error: action.payload,
       };
     default:

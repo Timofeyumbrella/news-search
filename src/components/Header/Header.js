@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { Link } from "react-router-dom";
 
 import { getSearchedNews } from "../../redux/searchedNews/searchedNews.actions";
+import { toggleTheme } from "../../redux/theme/theme.actions";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
 
@@ -11,6 +12,8 @@ import "./Header.styles.scss";
 
 const Header = () => {
   const [search, setSearch] = useState("");
+  const { theme } = useSelector((state) => state.theme);
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -24,23 +27,31 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className={`header header--${theme}`}>
       <div className="header__wrapper">
         <Link to="/">
           <Logo className="header__logo" />
         </Link>
         <form className="header__search-form" onSubmit={handleSubmit}>
           <input
-            className="header__search"
+            className={`header__search header__search--${theme}`}
             type="search"
             value={search}
             placeholder="search..."
             onChange={handleChange}
           />
         </form>
-        <Link to="/favourites">
-          <FavouritesIcon isInHeader />
-        </Link>
+        <div className="header__utils">
+          <button
+            className={`header__toggler header__toggler--${theme}`}
+            onClick={() => dispatch(toggleTheme())}
+          >
+            {theme === "light" ? "dark" : "light"}
+          </button>
+          <Link to="/favourites">
+            <FavouritesIcon />
+          </Link>
+        </div>
       </div>
     </header>
   );
