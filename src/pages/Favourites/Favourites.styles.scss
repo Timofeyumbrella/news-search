@@ -13,5 +13,9 @@
     font-weight: 600;
     letter-spacing: 1px;
     color: rgb(65, 65, 65);
+
+    &--dark {
+      color: rgb(199, 199, 199);
+    }
   }
 }

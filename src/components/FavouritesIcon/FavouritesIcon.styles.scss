@@ -1,9 +1,6 @@
 .favourites-icon {
-  font-size: 4rem;
+  width: 4rem;
+  height: 4.5rem;
   cursor: pointer;
-  color: rgb(224, 224, 13);
-
-  &:hover {
-    text-shadow: 0 0 1.3rem rgba(0, 0, 0, 0.2);
-  }
+  fill: rgb(224, 224, 13);
 }

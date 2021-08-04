@@ -1,4 +1,9 @@
 .remove-favourite-icon {
-  font-size: 3rem;
+  width: 3rem;
+  height: 3.5rem;
   cursor: pointer;
+
+  &--dark {
+    fill: #fff;
+  }
 }

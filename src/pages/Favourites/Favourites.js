@@ -16,7 +16,7 @@ const Favourites = () => {
           return <Article key={article.id} article={article} />;
         })
       ) : (
-        <h2 className="favourites__empty">
+        <h2 className={`favourites__empty favourites__empty--${theme}`}>
           You don't have any favourite news articles yet
         </h2>
       )}

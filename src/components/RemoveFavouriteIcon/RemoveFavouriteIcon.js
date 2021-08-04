@@ -1,10 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { ReactComponent as Remove } from "../../assets/icons/remove.svg";
 
 import "./RemoveFavouriteIcon.styles.scss";
 
 const RemoveFavouriteIcon = ({ onClick }) => {
+  const { theme } = useSelector((state) => state.theme);
+
   return (
-    <i className="fas fa-trash-alt remove-favourite-icon" onClick={onClick} />
+    <Remove
+      className={`remove-favourite-icon remove-favourite-icon--${theme}`}
+      onClick={onClick}
+    />
   );
 };
 
