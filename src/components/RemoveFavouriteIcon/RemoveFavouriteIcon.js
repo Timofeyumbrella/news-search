@@ -9,10 +9,12 @@ const RemoveFavouriteIcon = ({ onClick }) => {
   const { theme } = useSelector((state) => state.theme);
 
   return (
-    <Remove
+    <button
       className={`remove-favourite-icon remove-favourite-icon--${theme}`}
       onClick={onClick}
-    />
+    >
+      <Remove width="3rem" height="4.5rem" />
+    </button>
   );
 };
 

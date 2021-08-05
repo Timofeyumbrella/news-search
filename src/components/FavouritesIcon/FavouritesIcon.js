@@ -8,10 +8,12 @@ const FavouritesIcon = ({ onClick }) => {
   const { theme } = useSelector((state) => state.theme);
 
   return (
-    <Star
+    <button
       className={`favourites-icon favourites-icon--${theme}`}
       onClick={onClick}
-    />
+    >
+      <Star width="4rem" height="4.5rem" />
+    </button>
   );
 };
 
