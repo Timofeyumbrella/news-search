@@ -9,7 +9,7 @@ import themeReducer from "./theme/theme.reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["favourites", "theme"],
+  whitelist: ["news", "favourites", "theme"],
 };
 
 const rootReducer = combineReducers({
