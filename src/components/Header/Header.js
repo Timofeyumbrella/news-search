@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { getSearchedNews } from "../../redux/news/news.actions";
 
@@ -10,7 +10,7 @@ import ThemeIcon from "../ThemeIcon/ThemeIcon";
 
 import "./Header.styles.scss";
 
-const Header = () => {
+const Header = ({ history }) => {
   const [search, setSearch] = useState("");
   const { theme } = useSelector((state) => state.theme);
 
@@ -22,6 +22,8 @@ const Header = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    history.push("");
 
     dispatch(getSearchedNews(search));
   };
@@ -52,4 +54,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
