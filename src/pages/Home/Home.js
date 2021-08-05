@@ -29,7 +29,7 @@ const Home = () => {
           <Spinner />
         </div>
       )}
-      {data.length && (
+      {data.length > 0 && (
         <InifiniteScroll
           dataLength={data.length}
           next={() => fetchMoreNews(page, setPage)}
@@ -40,6 +40,7 @@ const Home = () => {
           })}
         </InifiniteScroll>
       )}
+      {!data.length && <h2 className="home__news-not-found">news not found</h2>}
       {error && <Error error={error} />}
     </div>
   );
