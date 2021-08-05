@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,11 @@ const Article = ({ article }) => {
 
   const dispatch = useDispatch();
 
+  const favourite = useMemo(
+    () => favourites.find((favourite) => favourite.id === article.id),
+    [favourites, article]
+  );
+
   return (
     <article className={`article article--${theme}`}>
       <Link
@@ -28,7 +33,7 @@ const Article = ({ article }) => {
       >
         {title}
       </Link>
-      {favourites.find((favourite) => favourite.id === article.id) ? (
+      {favourite ? (
         <RemoveFavouritesIcon
           onClick={() => dispatch(removeFromFavourites(article))}
         />

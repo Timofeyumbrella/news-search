@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -21,6 +21,11 @@ const Article = ({ match }) => {
 
   const dispatch = useDispatch();
 
+  const favourite = useMemo(
+    () => favourites.find((favourite) => favourite.id === article.id),
+    [favourites, article]
+  );
+
   useEffect(() => {
     setArticle(
       news.find((article) => article.id === match.params.articleId) ||
@@ -37,7 +42,7 @@ const Article = ({ match }) => {
         <Image urlToImage={urlToImage} />
         <div className="article-page__info">
           <h2 className="article-page__title">{title}</h2>
-          {favourites.find((favourite) => favourite.id === article.id) ? (
+          {favourite ? (
             <RemoveFavouritesIcon
               onClick={() => dispatch(removeFromFavourites(article))}
             />
