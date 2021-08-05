@@ -4,9 +4,9 @@ import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { Link } from "react-router-dom";
 
 import { getSearchedNews } from "../../redux/news/news.actions";
-import { toggleTheme } from "../../redux/theme/theme.actions";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
+import ThemeIcon from "../ThemeIcon/ThemeIcon";
 
 import "./Header.styles.scss";
 
@@ -42,12 +42,7 @@ const Header = () => {
           />
         </form>
         <div className="header__utils">
-          <button
-            className={`header__toggler header__toggler--${theme}`}
-            onClick={() => dispatch(toggleTheme())}
-          >
-            {theme === "light" ? "dark" : "light"}
-          </button>
+          <ThemeIcon />
           <Link to="/favourites">
             <FavouritesIcon />
           </Link>
