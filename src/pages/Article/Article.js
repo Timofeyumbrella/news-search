@@ -33,8 +33,12 @@ const Article = ({ match }) => {
     article;
 
   return (
-    <article className={`article-page article-page--${theme}`}>
-      <div className={`article-page__wrapper article-page__wrapper--${theme}`}>
+    <article
+      className={`${
+        theme === "light" ? "light-theme" : "dark-theme"
+      } article-page`}
+    >
+      <div className="article-page__wrapper">
         <Image urlToImage={urlToImage} />
         <div className="article-page__info">
           <h2 className="article-page__title">{title}</h2>

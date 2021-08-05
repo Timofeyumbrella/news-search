@@ -26,11 +26,10 @@ const Article = ({ article }) => {
   );
 
   return (
-    <article className={`article article--${theme}`}>
-      <Link
-        to={`news/${id}`}
-        className={`article__title article__title--${theme}`}
-      >
+    <article
+      className={`${theme === "light" ? "light-theme" : "dark-theme"} article`}
+    >
+      <Link to={`news/${id}`} className="article__title">
         {title}
       </Link>
       {favourite ? (
@@ -40,11 +39,9 @@ const Article = ({ article }) => {
       ) : (
         <FavouritesIcon onClick={() => dispatch(addToFavourites(article))} />
       )}
-      <p className={`article__description article__description--${theme}`}>
-        {description}
-      </p>
+      <p className="article__description">{description}</p>
       <Image urlToImage={urlToImage} />
-      <footer className={`article__footer article__footer--${theme}`}>
+      <footer className="article__footer">
         <span className="article__author">{author}</span>
         <span className="article__published-at">{publishedAt}</span>
       </footer>

@@ -1,8 +1,5 @@
 .remove-favourite-icon {
   cursor: pointer;
   background-color: inherit;
-
-  &--dark {
-    fill: #fff;
-  }
+  fill: var(--text-color);
 }

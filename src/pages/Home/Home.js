@@ -23,7 +23,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className={`home home--${theme}`}>
+    <div className={`${theme === "light" ? "light-theme" : "dark-theme"} home`}>
       {loading && (
         <div className="home__loading">
           <Spinner />

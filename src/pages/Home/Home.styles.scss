@@ -1,11 +1,7 @@
 .home {
   display: flex;
   flex-direction: column;
-
-  &--dark {
-    background-color: rgb(61, 61, 61);
-    border: 0.1px solid rgb(61, 61, 61);
-  }
+  background-color: var(--page-color);
 
   &__loading {
     height: 85vh;

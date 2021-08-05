@@ -1,3 +1,25 @@
+.light-theme {
+  --header-color: #eef0f2;
+  --article-color: #fff;
+  --page-color: #fff;
+  --text-color: #000;
+  --search-color: #fff;
+  --empty-color: rgb(65, 65, 65);
+  --page-border: none;
+  --wrapper-color: #fff;
+}
+
+.dark-theme {
+  --header-color: rgb(42, 42, 42);
+  --article-color: rgb(48, 48, 48);
+  --page-color: rgb(61, 61, 61);
+  --text-color: #fff;
+  --search-color: rgb(42, 42, 42);
+  --empty-color: rgb(199, 199, 199);
+  --page-border: 0.1px solid rgb(61, 61, 61);
+  --wrapper-color: rgb(42, 42, 42);
+}
+
 * {
   &,
   &::before,

@@ -10,7 +10,9 @@ const RemoveFavouriteIcon = ({ onClick }) => {
 
   return (
     <button
-      className={`remove-favourite-icon remove-favourite-icon--${theme}`}
+      className={`${
+        theme === "light" ? "light-theme" : "dark-theme"
+      } remove-favourite-icon`}
       onClick={onClick}
     >
       <Remove width="3rem" height="4.5rem" />

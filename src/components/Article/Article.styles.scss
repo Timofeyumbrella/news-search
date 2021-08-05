@@ -8,28 +8,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &--dark {
-    background-color: rgb(48, 48, 48);
-
-    color: #fff;
-  }
+  background-color: var(--article-color);
+  color: var(--text-color);
 
   &__title {
     width: 60%;
     margin-bottom: 2rem;
     text-decoration: none;
-    color: #000;
+    color: var(--text-color);
     text-align: center;
     font-size: 2.8rem;
     font-weight: 600;
 
     &:hover {
       text-decoration: underline;
-    }
-
-    &--dark {
-      color: #fff;
     }
   }
 
@@ -39,10 +31,7 @@
     font-size: 2rem;
     letter-spacing: 1px;
     text-align: center;
-
-    &--dark {
-      color: #fff;
-    }
+    color: var(--text-color);
   }
 
   &__image {
@@ -57,10 +46,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    &--dark {
-      color: #fff;
-    }
+    color: var(--text-color);
   }
 
   &__author {

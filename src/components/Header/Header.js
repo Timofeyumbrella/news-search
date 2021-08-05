@@ -29,14 +29,16 @@ const Header = ({ history }) => {
   };
 
   return (
-    <header className={`header header--${theme}`}>
+    <header
+      className={`${theme === "light" ? "light-theme" : "dark-theme"} header`}
+    >
       <div className="header__wrapper">
         <Link to="/">
           <Logo className="header__logo" />
         </Link>
         <form className="header__search-form" onSubmit={handleSubmit}>
           <input
-            className={`header__search header__search--${theme}`}
+            className="header__search"
             type="search"
             value={search}
             placeholder="search..."

@@ -10,13 +10,17 @@ const Favourites = () => {
   const { theme } = useSelector((state) => state.theme);
 
   return (
-    <div className={`favourites favourites--${theme}`}>
+    <div
+      className={`${
+        theme === "light" ? "light-theme" : "dark-theme"
+      } favourites`}
+    >
       {favourites.length ? (
         favourites.map((article) => {
           return <Article key={article.id} article={article} />;
         })
       ) : (
-        <h2 className={`favourites__empty favourites__empty--${theme}`}>
+        <h2 className="favourites__empty">
           You don't have any favourite news articles yet
         </h2>
       )}
