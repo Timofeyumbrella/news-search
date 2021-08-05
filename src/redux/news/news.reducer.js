@@ -27,6 +27,13 @@ const newsReducer = (state = INITIAL_STATE, action) => {
         data: [...state.news, ...action.payload],
         error: "",
       };
+    case NewsActionTypes.GET_SEARCHED_NEWS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+        error: "",
+      };
     case NewsActionTypes.GET_NEWS_FAILURE:
       return {
         ...state,

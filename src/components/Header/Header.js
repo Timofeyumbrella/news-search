@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { Link } from "react-router-dom";
 
-import { getSearchedNews } from "../../redux/searchedNews/searchedNews.actions";
+import { getSearchedNews } from "../../redux/news/news.actions";
 import { toggleTheme } from "../../redux/theme/theme.actions";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";

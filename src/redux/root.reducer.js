@@ -3,7 +3,6 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import newsReducer from "./news/news.reducer";
-import searchedNewsReducer from "./searchedNews/searchedNews.reducer";
 import favouritesReducer from "./favourites/favourites.reducer";
 import themeReducer from "./theme/theme.reducer";
 
@@ -15,7 +14,6 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   news: newsReducer,
-  searchedNews: searchedNewsReducer,
   favourites: favouritesReducer,
   theme: themeReducer,
 });
