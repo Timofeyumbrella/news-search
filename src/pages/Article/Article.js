@@ -13,10 +13,9 @@ import Image from "../../components/Image/Image";
 import "./Article.styles.scss";
 
 const Article = ({ match }) => {
-  const { data: news } = useSelector((state) => state.news);
-  const { data: searchedNews } = useSelector((state) => state.searchedNews);
   const { favourites } = useSelector((state) => state.favourites);
   const { theme } = useSelector((state) => state.theme);
+  const { data } = useSelector((state) => state.news);
   const [article, setArticle] = useState({});
 
   const dispatch = useDispatch();
@@ -27,11 +26,8 @@ const Article = ({ match }) => {
   );
 
   useEffect(() => {
-    setArticle(
-      news.find((article) => article.id === match.params.articleId) ||
-        searchedNews.find((article) => article.id === match.params.articleId)
-    );
-  }, [news, searchedNews, match.params.articleId]);
+    setArticle(data.find((article) => article.id === match.params.articleId));
+  }, [data]);
 
   const { author, title, description, urlToImage, publishedAt, content } =
     article;
