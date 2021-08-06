@@ -32,7 +32,7 @@ const Home = () => {
       {data.length > 0 && (
         <InifiniteScroll
           dataLength={data.length}
-          next={() => fetchMoreNews(page, setPage)}
+          next={() => dispatch(fetchMoreNews(page, setPage))}
           hasMore={page <= 20}
         >
           {data.map((article) => {

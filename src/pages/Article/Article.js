@@ -27,7 +27,7 @@ const Article = ({ match }) => {
 
   useEffect(() => {
     setArticle(data.find((article) => article.id === match.params.articleId));
-  }, [data]);
+  }, [data, match.params.articleId]);
 
   const { author, title, description, urlToImage, publishedAt, content } =
     article;

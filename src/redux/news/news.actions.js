@@ -71,7 +71,7 @@ export const getSearchedNews = (query) => (dispatch) => {
   getSearchedNewsAsync();
 };
 
-export const fetchMoreNews = async (page, setPage) => (dispatch) => {
+export const fetchMoreNews = (page, setPage) => (dispatch) => {
   const fetchMoreNewsAsync = async () => {
     try {
       setPage(page + 1);
@@ -86,7 +86,7 @@ export const fetchMoreNews = async (page, setPage) => (dispatch) => {
         )
       );
     } catch (error) {
-      dispatchEvent(getNewsFailure(error.message));
+      dispatch(getNewsFailure(error.message));
     }
   };
 
