@@ -40,7 +40,7 @@ const Article = ({ article }) => {
         <FavouritesIcon onClick={() => dispatch(addToFavourites(article))} />
       )}
       <p className="article__description">{description}</p>
-      <Image urlToImage={urlToImage} />
+      <Image urlToImage={urlToImage} isListed />
       <footer className="article__footer">
         <span className="article__author">{author}</span>
         <span className="article__published-at">{publishedAt}</span>
