@@ -14,7 +14,6 @@ const Home = () => {
   const [page, setPage] = useState(2);
 
   const { loading, data, error } = useSelector((state) => state.news);
-  const { theme } = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
 
@@ -23,7 +22,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className={`${theme === "light" ? "light-theme" : "dark-theme"} home`}>
+    <div className="home">
       {loading && (
         <div className="home__loading">
           <Spinner />

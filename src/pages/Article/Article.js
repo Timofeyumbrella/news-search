@@ -14,7 +14,6 @@ import "./Article.styles.scss";
 
 const Article = ({ match }) => {
   const { favourites } = useSelector((state) => state.favourites);
-  const { theme } = useSelector((state) => state.theme);
   const { data } = useSelector((state) => state.news);
   const [article, setArticle] = useState({});
 
@@ -33,11 +32,7 @@ const Article = ({ match }) => {
     article;
 
   return (
-    <article
-      className={`${
-        theme === "light" ? "light-theme" : "dark-theme"
-      } article-page`}
-    >
+    <article className="article-page">
       <div className="article-page__wrapper">
         <Image urlToImage={urlToImage} />
         <div className="article-page__info">

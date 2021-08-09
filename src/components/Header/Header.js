@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { Link, withRouter } from "react-router-dom";
 
@@ -12,7 +12,6 @@ import "./Header.styles.scss";
 
 const Header = ({ history }) => {
   const [search, setSearch] = useState("");
-  const { theme } = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
 
@@ -29,9 +28,7 @@ const Header = ({ history }) => {
   };
 
   return (
-    <header
-      className={`${theme === "light" ? "light-theme" : "dark-theme"} header`}
-    >
+    <header className="header">
       <div className="header__wrapper">
         <Link to="/">
           <Logo className="header__logo" />

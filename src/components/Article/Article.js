@@ -16,7 +16,6 @@ import "./Article.styles.scss";
 const Article = ({ article }) => {
   const { id, author, title, description, urlToImage, publishedAt } = article;
   const { favourites } = useSelector((state) => state.favourites);
-  const { theme } = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
 
@@ -26,9 +25,7 @@ const Article = ({ article }) => {
   );
 
   return (
-    <article
-      className={`${theme === "light" ? "light-theme" : "dark-theme"} article`}
-    >
+    <article className="article">
       <Link to={`news/${id}`} className="article__title">
         {title}
       </Link>

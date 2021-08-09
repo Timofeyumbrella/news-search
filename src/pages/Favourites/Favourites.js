@@ -7,14 +7,9 @@ import "./Favourites.styles.scss";
 
 const Favourites = () => {
   const { favourites } = useSelector((state) => state.favourites);
-  const { theme } = useSelector((state) => state.theme);
 
   return (
-    <div
-      className={`${
-        theme === "light" ? "light-theme" : "dark-theme"
-      } favourites`}
-    >
+    <div className="favourites">
       {favourites.length ? (
         favourites.map((article) => {
           return <Article key={article.id} article={article} />;
