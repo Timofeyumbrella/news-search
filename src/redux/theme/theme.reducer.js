@@ -1,8 +1,8 @@
 import { ThemeActionTypes } from "./theme.types";
-import themeByDefault from "./theme.utils";
+import { prefersTheme } from "./theme.utils";
 
 const INITIAL_THEME = {
-  theme: themeByDefault,
+  theme: prefersTheme,
 };
 
 const themeReducer = (state = INITIAL_THEME, action) => {
