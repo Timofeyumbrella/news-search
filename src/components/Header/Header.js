@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
+import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { Link, withRouter } from "react-router-dom";
 
-import { getSearchedNews } from "../../redux/news/news.actions";
+import { getSearchedNews } from "redux/news/news.actions";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
 import ThemeIcon from "../ThemeIcon/ThemeIcon";

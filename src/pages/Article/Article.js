@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addToFavourites,
   removeFromFavourites,
-} from "../../redux/favourites/favourites.actions";
+} from "redux/favourites/favourites.actions";
 
-import FavouritesIcon from "../../components/FavouritesIcon/FavouritesIcon";
-import RemoveFavouritesIcon from "../../components/RemoveFavouriteIcon/RemoveFavouriteIcon";
-import Image from "../../components/Image/Image";
+import FavouritesIcon from "components/FavouritesIcon/FavouritesIcon";
+import RemoveFavouritesIcon from "components/RemoveFavouriteIcon/RemoveFavouriteIcon";
+import Image from "components/Image/Image";
 
 import "./Article.styles.scss";
 

@@ -2,11 +2,11 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import Home from "./pages/Home/Home";
-import Article from "./pages/Article/Article";
-import Favourites from "./pages/Favourites/Favourites";
+import Home from "pages/Home/Home";
+import Article from "pages/Article/Article";
+import Favourites from "pages/Favourites/Favourites";
 
-import Header from "./components/Header/Header";
+import Header from "components/Header/Header";
 
 import "./App.scss";
 

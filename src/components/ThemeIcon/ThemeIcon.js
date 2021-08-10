@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { ReactComponent as LightTheme } from "../../assets/icons/light-theme.svg";
-import { ReactComponent as DarkTheme } from "../../assets/icons/dark-theme.svg";
+import { ReactComponent as LightTheme } from "assets/icons/light-theme.svg";
+import { ReactComponent as DarkTheme } from "assets/icons/dark-theme.svg";
 
-import { toggleTheme } from "../../redux/theme/theme.actions";
+import { toggleTheme } from "redux/theme/theme.actions";
 
 import "./ThemeIcon.styles.scss";
 

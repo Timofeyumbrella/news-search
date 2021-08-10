@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Article from "../../components/Article/Article";
+import Article from "components/Article/Article";
 
 import "./Favourites.styles.scss";
 

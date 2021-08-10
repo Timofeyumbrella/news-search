@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as Remove } from "../../assets/icons/remove.svg";
+import { ReactComponent as Remove } from "assets/icons/remove.svg";
 
 import "./RemoveFavouriteIcon.styles.scss";
 

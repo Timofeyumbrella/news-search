@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {
   addToFavourites,
   removeFromFavourites,
-} from "../../redux/favourites/favourites.actions";
+} from "redux/favourites/favourites.actions";
 
 import Image from "../Image/Image";
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";

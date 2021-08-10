@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import InifiniteScroll from "react-infinite-scroll-component";
 
-import { getNews, fetchMoreNews } from "../../redux/news/news.actions";
+import { getNews, fetchMoreNews } from "redux/news/news.actions";
 
-import Article from "../../components/Article/Article";
-import Spinner from "../../components/Spinner/Spinner";
-import Error from "../../components/Error/Error";
+import Article from "components/Article/Article";
+import Spinner from "components/Spinner/Spinner";
+import Error from "components/Error/Error";
 
 import "./Home.styles.scss";
 
