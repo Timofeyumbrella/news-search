@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { Link, withRouter } from "react-router-dom";
 
-import { getSearchedNews } from "redux/news/news.actions";
-import { useDebounce } from "utils/useDebounce";
 import { getNews } from "redux/news/news.actions";
+import { useDebounce } from "utils/useDebounce";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
 import ThemeIcon from "../ThemeIcon/ThemeIcon";
@@ -14,6 +13,7 @@ import "./Header.styles.scss";
 
 const Header = ({ history }) => {
   const [search, setSearch] = useState("");
+  const [select, setSelect] = useState("");
 
   const debouncedSearch = useDebounce(search, 500);
 
@@ -23,11 +23,17 @@ const Header = ({ history }) => {
     setSearch(event.target.value);
   };
 
+  const handleSelect = (event) => {
+    setSelect(event.target.value);
+  };
+
   useEffect(() => {
-    !debouncedSearch && dispatch(getNews());
-    debouncedSearch && dispatch(getSearchedNews(search));
+    !debouncedSearch && !select && dispatch(getNews());
+    debouncedSearch && !select && dispatch(getNews(search));
     debouncedSearch && history.push("");
-  }, [debouncedSearch, dispatch, history]);
+    !debouncedSearch && select && dispatch(getNews(undefined, select));
+    debouncedSearch && select && dispatch(getNews(search, select));
+  }, [debouncedSearch, dispatch, history, select]);
 
   return (
     <header className="header">
@@ -43,6 +49,13 @@ const Header = ({ history }) => {
             placeholder="search..."
             onChange={handleChange}
           />
+        </form>
+        <form className="header__sort-form">
+          <select className="header__select" onChange={handleSelect}>
+            <option value="relevancy">relevancy</option>
+            <option value="popularity">popularity</option>
+            <option value="publishedAt">published at</option>
+          </select>
         </form>
         <div className="header__utils">
           <ThemeIcon />

@@ -12,11 +12,6 @@ const getNewsSuccess = (news) => ({
   payload: news,
 });
 
-const getSearchedNewsSuccess = (news) => ({
-  type: NewsActionTypes.GET_SEARCHED_NEWS_SUCCESS,
-  payload: news,
-});
-
 const getNewsFailure = (error) => ({
   type: NewsActionTypes.GET_NEWS_FAILURE,
   payload: error,
@@ -27,49 +22,29 @@ export const getMoreNews = (news) => ({
   payload: news,
 });
 
-export const getNews = () => (dispatch) => {
-  const getNewsAsync = async () => {
-    try {
-      dispatch(getNewsRequest());
+export const getNews =
+  (query = "everything", sortBy = "publishedAt") =>
+  (dispatch) => {
+    const getNewsAsync = async () => {
+      try {
+        dispatch(getNewsRequest());
 
-      const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=everything&sortBy=publishedAt&page=1&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
-      );
+        const res = await axios.get(
+          `https://newsapi.org/v2/everything?q=${query}&sortBy=${sortBy}&page=1&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
+        );
 
-      dispatch(
-        getNewsSuccess(
-          res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
-        )
-      );
-    } catch (error) {
-      dispatch(getNewsFailure(error.message));
-    }
+        dispatch(
+          getNewsSuccess(
+            res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
+          )
+        );
+      } catch (error) {
+        dispatch(getNewsFailure(error.message));
+      }
+    };
+
+    getNewsAsync();
   };
-
-  getNewsAsync();
-};
-
-export const getSearchedNews = (query) => (dispatch) => {
-  const getSearchedNewsAsync = async () => {
-    try {
-      dispatch(getNewsRequest());
-
-      const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&page=1&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
-      );
-
-      dispatch(
-        getSearchedNewsSuccess(
-          res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
-        )
-      );
-    } catch (error) {
-      dispatch(getNewsFailure(error.message));
-    }
-  };
-
-  getSearchedNewsAsync();
-};
 
 export const fetchMoreNews = (page, setPage) => (dispatch) => {
   const fetchMoreNewsAsync = async () => {

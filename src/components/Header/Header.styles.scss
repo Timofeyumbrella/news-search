@@ -25,7 +25,6 @@
     padding: 1rem;
     border-radius: 1rem;
     font-size: 1.8rem;
-    background-color: var(--header-color);
     color: var(--text-color);
     border: 1px solid rgba(255, 255, 255, 0.5);
     background-color: var(--search-color);
@@ -33,6 +32,22 @@
     &::placeholder {
       color: var(--text-color);
     }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__select {
+    height: 4rem;
+    border-radius: 5px;
+    background-color: var(--search-color);
+    padding: 5px;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 
     &:focus {
       outline: none;
