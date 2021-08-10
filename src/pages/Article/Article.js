@@ -19,9 +19,9 @@ const Article = ({ match }) => {
 
   const dispatch = useDispatch();
 
-  const favourite = useMemo(
-    () => favourites.find((favourite) => favourite.id === article.id),
-    [favourites, article]
+  const isFavourite = useMemo(
+    () => !!favourites.find((favourite) => favourite.id === article.id),
+    [favourites, article.id]
   );
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Article = ({ match }) => {
         <Image urlToImage={urlToImage} />
         <div className="article-page__info">
           <h2 className="article-page__title">{title}</h2>
-          {favourite ? (
+          {isFavourite ? (
             <RemoveFavouritesIcon
               onClick={() => dispatch(removeFromFavourites(article))}
             />

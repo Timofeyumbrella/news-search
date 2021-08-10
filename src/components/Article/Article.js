@@ -19,9 +19,9 @@ const Article = ({ article }) => {
 
   const dispatch = useDispatch();
 
-  const favourite = useMemo(
-    () => favourites.find((favourite) => favourite.id === article.id),
-    [favourites, article]
+  const isFavourite = useMemo(
+    () => !!favourites.find((favourite) => favourite.id === article.id),
+    [favourites, article.id]
   );
 
   return (
@@ -29,7 +29,7 @@ const Article = ({ article }) => {
       <Link to={`news/${id}`} className="article__title">
         {title}
       </Link>
-      {favourite ? (
+      {isFavourite ? (
         <RemoveFavouritesIcon
           onClick={() => dispatch(removeFromFavourites(article))}
         />
