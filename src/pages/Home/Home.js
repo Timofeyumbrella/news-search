@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import InifiniteScroll from "react-infinite-scroll-component";
 
-import { getNews, fetchMoreNews } from "redux/news/news.actions";
+import { fetchMoreNews } from "redux/news/news.actions";
 
 import Article from "components/Article/Article";
 import Spinner from "components/Spinner/Spinner";
@@ -16,10 +16,6 @@ const Home = () => {
   const { loading, data, error } = useSelector((state) => state.news);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getNews());
-  }, [dispatch]);
 
   return (
     <div className="home">
