@@ -22,16 +22,32 @@ export const getMoreNews = (news) => ({
   payload: news,
 });
 
+export const setQuery = (query) => ({
+  type: NewsActionTypes.SET_QUERY,
+  payload: query,
+});
+
+export const setSortBy = (sortBy) => ({
+  type: NewsActionTypes.SET_SORT_BY,
+  payload: sortBy,
+});
+
 export const getNews =
-  (query = "everything", sortBy = "publishedAt") =>
+  ({ query, sortBy }) =>
   (dispatch) => {
     const getNewsAsync = async () => {
       try {
         dispatch(getNewsRequest());
 
-        const res = await axios.get(
-          `https://newsapi.org/v2/everything?q=${query}&sortBy=${sortBy}&page=1&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
-        );
+        const res = await axios.get("https://newsapi.org/v2/everything", {
+          params: {
+            q: query || "everything",
+            sortBy,
+            apiKey: process.env.REACT_APP_KEY,
+            page: 1,
+            pageSize: 5,
+          },
+        });
 
         dispatch(
           getNewsSuccess(
@@ -46,24 +62,32 @@ export const getNews =
     getNewsAsync();
   };
 
-export const fetchMoreNews = (page, setPage) => (dispatch) => {
-  const fetchMoreNewsAsync = async () => {
-    try {
-      setPage(page + 1);
+export const fetchMoreNews =
+  ({ query, sortBy, page, setPage }) =>
+  (dispatch) => {
+    const fetchMoreNewsAsync = async () => {
+      try {
+        setPage(page + 1);
 
-      const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=all&sortBy=publishedAt&page=${page}&pageSize=5&apiKey=${process.env.REACT_APP_KEY}`
-      );
+        const res = await axios.get("https://newsapi.org/v2/everything", {
+          params: {
+            q: query || "everything",
+            sortBy,
+            page,
+            apiKey: process.env.REACT_APP_KEY,
+            pageSize: 5,
+          },
+        });
 
-      dispatch(
-        getMoreNews(
-          res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
-        )
-      );
-    } catch (error) {
-      dispatch(getNewsFailure(error.message));
-    }
+        dispatch(
+          getMoreNews(
+            res.data.articles.map((article) => ({ id: uuidv4(), ...article }))
+          )
+        );
+      } catch (error) {
+        dispatch(getNewsFailure(error.message));
+      }
+    };
+
+    fetchMoreNewsAsync();
   };
-
-  fetchMoreNewsAsync();
-};

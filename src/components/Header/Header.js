@@ -1,38 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import { getNews } from "redux/news/news.actions";
-import { useDebounce } from "utils/useDebounce";
+import { getNews, setQuery, setSortBy } from "redux/news/news.actions";
+import { useDebouncedValue } from "utils/useDebounce";
 
 import FavouritesIcon from "../FavouritesIcon/FavouritesIcon";
 import ThemeIcon from "../ThemeIcon/ThemeIcon";
 
 import "./Header.styles.scss";
 
-const Header = ({ history }) => {
+const Header = () => {
   const [search, setSearch] = useState("");
   const [select, setSelect] = useState("");
 
-  const debouncedSearch = useDebounce(search, 500);
+  const history = useHistory();
+
+  const debouncedSearch = useDebouncedValue(search, 500);
 
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setSearch(event.target.value);
+
+    dispatch(setQuery(event.target.value));
   };
 
   const handleSelect = (event) => {
     setSelect(event.target.value);
+
+    dispatch(setSortBy(event.target.value));
   };
 
   useEffect(() => {
-    !debouncedSearch && !select && dispatch(getNews());
-    debouncedSearch && !select && dispatch(getNews(search));
-    debouncedSearch && history.push("");
-    !debouncedSearch && select && dispatch(getNews(undefined, select));
-    debouncedSearch && select && dispatch(getNews(search, select));
+    dispatch(getNews({ query: debouncedSearch, sortBy: select }));
+    history.push("/");
   }, [debouncedSearch, dispatch, history, select]);
 
   return (
@@ -68,4 +71,4 @@ const Header = ({ history }) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;

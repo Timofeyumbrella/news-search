@@ -12,8 +12,9 @@ import "./Home.styles.scss";
 
 const Home = () => {
   const [page, setPage] = useState(2);
-
-  const { loading, data, error } = useSelector((state) => state.news);
+  const { loading, data, error, query, sortBy } = useSelector(
+    (state) => state.news
+  );
 
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const Home = () => {
       {data.length > 0 && (
         <InifiniteScroll
           dataLength={data.length}
-          next={() => dispatch(fetchMoreNews(page, setPage))}
+          next={() => dispatch(fetchMoreNews({ query, sortBy, page, setPage }))}
           hasMore={page <= 20}
         >
           {data.map((article) => {
