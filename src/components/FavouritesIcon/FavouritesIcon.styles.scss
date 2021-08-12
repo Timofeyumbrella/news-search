@@ -1,5 +1,14 @@
 .favourites-icon {
   cursor: pointer;
   background-color: inherit;
-  fill: rgb(224, 224, 13);
+
+  svg {
+    width: 4rem;
+    height: 4.5rem;
+
+    @media only screen and (max-width: 420px) {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
 }

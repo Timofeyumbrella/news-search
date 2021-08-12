@@ -5,18 +5,28 @@
   align-items: center;
 
   &__wrapper {
-    width: 70%;
+    width: 100rem;
+    max-width: 97%;
     height: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 920px) {
+      flex-direction: column;
+    }
   }
 
   &__logo {
     width: 8rem;
     height: 8rem;
     cursor: pointer;
+
+    @media only screen and (max-width: 420px) {
+      width: 12rem;
+      height: 12rem;
+    }
   }
 
   &__search {
@@ -36,6 +46,11 @@
     &:focus {
       outline: none;
     }
+
+    @media only screen and (max-width: 420px) {
+      max-width: 30rem;
+      font-size: 2rem;
+    }
   }
 
   &__select {
@@ -54,8 +69,25 @@
     }
   }
 
+  &__search,
+  &__select {
+    @media only screen and (max-width: 420px) {
+      font-size: 2rem;
+    }
+  }
+
   &__utils {
     display: flex;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 920px) {
+    height: auto;
+    padding: 2rem;
+
+    form,
+    div {
+      margin-top: 3rem;
+    }
   }
 }

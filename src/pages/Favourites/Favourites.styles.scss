@@ -7,6 +7,7 @@
 
   &__search {
     width: 70rem;
+    max-width: 85%;
     height: 4rem;
     padding: 1rem;
     margin-top: 5rem;
@@ -17,12 +18,20 @@
     letter-spacing: 1px;
     font-size: 1.7rem;
 
+    @media only screen and (max-width: 420px) {
+      font-size: 2rem;
+    }
+
     &::placeholder {
       color: var(--text-color);
       font-style: italic;
       font-size: 1.3rem;
       letter-spacing: 1px;
       text-align: center;
+
+      @media only screen and (max-width: 420px) {
+        font-size: 1.6rem;
+      }
     }
 
     &:focus {

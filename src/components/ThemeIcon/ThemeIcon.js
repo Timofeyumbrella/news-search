@@ -15,11 +15,7 @@ const ThemeIcon = () => {
 
   return (
     <button className="theme-icon" onClick={() => dispatch(toggleTheme())}>
-      {theme === "light" ? (
-        <DarkTheme width="4rem" height="4rem" />
-      ) : (
-        <LightTheme width="4rem" height="4rem" />
-      )}
+      {theme === "light" ? <DarkTheme /> : <LightTheme />}
     </button>
   );
 };

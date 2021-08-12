@@ -6,7 +6,7 @@ import "./FavouritesIcon.styles.scss";
 const FavouritesIcon = ({ onClick }) => {
   return (
     <button className="favourites-icon" onClick={onClick}>
-      <Star width="4rem" height="4.5rem" />
+      <Star />
     </button>
   );
 };

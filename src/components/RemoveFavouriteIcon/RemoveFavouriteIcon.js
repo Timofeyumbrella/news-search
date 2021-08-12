@@ -7,7 +7,7 @@ import "./RemoveFavouriteIcon.styles.scss";
 const RemoveFavouriteIcon = ({ onClick }) => {
   return (
     <button className="remove-favourite-icon" onClick={onClick}>
-      <Remove width="3rem" height="4.5rem" />
+      <Remove />
     </button>
   );
 };

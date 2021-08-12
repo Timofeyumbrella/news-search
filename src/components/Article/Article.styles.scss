@@ -12,7 +12,8 @@
   color: var(--text-color);
 
   &__title {
-    width: 60%;
+    width: 57rem;
+    max-width: 90%;
     margin-bottom: 2rem;
     text-decoration: none;
     color: var(--text-color);
@@ -56,5 +57,13 @@
   &__published-at {
     margin-top: 5px;
     font-style: italic;
+  }
+
+  &__description,
+  &__author,
+  &__publishedAt {
+    @media only screen and (max-width: 420px) {
+      font-size: 2.6rem;
+    }
   }
 }

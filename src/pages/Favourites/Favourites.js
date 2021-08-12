@@ -13,7 +13,7 @@ const Favourites = () => {
     setSearch(event.target.value);
   };
 
-  const filteredFavourites = favourites.filter((favourite) =>
+  const searchedFavourites = favourites.filter((favourite) =>
     favourite.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -28,11 +28,11 @@ const Favourites = () => {
       />
       {search.length > 0 && (
         <h2 className="favourites__search-results">
-          {filteredFavourites.length} search results for: <span>{search}</span>
+          {searchedFavourites.length} search results for: <span>{search}</span>
         </h2>
       )}
-      {filteredFavourites.length > 0 &&
-        filteredFavourites.map((article) => {
+      {searchedFavourites.length > 0 &&
+        searchedFavourites.map((article) => {
           return <Article key={article.id} article={article} />;
         })}
       {!favourites.length && (

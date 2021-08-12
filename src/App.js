@@ -14,7 +14,7 @@ const App = () => {
   const { theme } = useSelector((state) => state.theme);
 
   return (
-    <div className={`${theme === "light" ? "light-theme" : "dark-theme"}`}>
+    <div className={theme === "light" ? "light-theme" : "dark-theme"}>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />

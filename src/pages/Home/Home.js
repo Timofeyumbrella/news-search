@@ -36,7 +36,9 @@ const Home = () => {
           })}
         </InifiniteScroll>
       )}
-      {!data.length && <h2 className="home__news-not-found">news not found</h2>}
+      {!data.length && !loading && (
+        <h2 className="home__news-not-found">news not found</h2>
+      )}
       {error && <Error error={error} />}
     </div>
   );
